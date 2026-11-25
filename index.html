@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Weather Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="dash">
+    <header class="dash__header">
+      <h1>Weather</h1>
+      <div class="units" role="group" aria-label="Units">
+        <button type="button" class="units__btn is-active" data-units="metric" aria-pressed="true">°C</button>
+        <button type="button" class="units__btn" data-units="imperial" aria-pressed="false">°F</button>
+      </div>
+    </header>
+
+    <form id="search-form" class="search" autocomplete="off">
+      <label for="city" class="visually-hidden">City name</label>
+      <input id="city" type="search" placeholder="Search for a city" maxlength="80" required>
+      <button type="submit" class="btn">Search</button>
+    </form>
+
+    <div id="status" class="status" role="status" aria-live="polite" hidden></div>
+    <ul id="matches" class="matches" hidden></ul>
+
+    <section id="current" class="current" aria-labelledby="place" hidden>
+      <div class="current__main">
+        <p class="current__icon" id="icon" aria-hidden="true"></p>
+        <div>
+          <h2 id="place"></h2>
+          <p id="condition" class="current__condition"></p>
+          <p id="local-time" class="current__time"></p>
+        </div>
+        <p id="temp" class="current__temp"></p>
+      </div>
+      <dl class="metrics">
+        <div class="metric"><dt>Feels like</dt><dd id="feels"></dd></div>
+        <div class="metric"><dt>Humidity</dt><dd id="humidity"></dd></div>
+        <div class="metric"><dt>Wind</dt><dd id="wind"></dd></div>
+      </dl>
+    </section>
+
+    <section id="forecast-section" class="forecast" aria-labelledby="forecast-title" hidden>
+      <h2 id="forecast-title">5-day forecast</h2>
+      <ul id="forecast" class="forecast__list"></ul>
+    </section>
+
+    <p class="credit">Data from <a href="https://open-meteo.com/">Open-Meteo</a>. No API key needed.</p>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
